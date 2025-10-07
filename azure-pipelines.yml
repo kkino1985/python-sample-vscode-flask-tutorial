@@ -25,10 +25,11 @@ strategy:
       python.version: '3.11'
 
 steps:
+
 - script: |
-    echo "Setting LD_LIBRARY_PATH..."
-    echo "$HOME/_work/_tool/Python/3.11.13/x64/lib" >> $env:LD_LIBRARY_PATH
-  displayName: 'Set LD_LIBRARY_PATH for Python'
+    echo "##vso[task.setvariable variable=LD_LIBRARY_PATH;]:/home/azureuser/agent/_work/_tool/Python/3.11.13/x64/lib"
+    echo "LD_LIBRARY_PATH is: $LD_LIBRARY_PATH"
+  displayName: 'Set LD_LIBRARY_PATH'
 
 - task: UsePythonVersion@0
   inputs:
