@@ -9,9 +9,9 @@ trigger:
 pool:
   name: "kinoshita-local"
 
-variables:
-- name: LD_LIBRARY_PATH
-  value: "${LD_LIBRARY_PATH}:~/_work/_tool/Python/3.11.13/x64/lib"
+#variables:
+#- name: LD_LIBRARY_PATH
+#  value: "${LD_LIBRARY_PATH}:~/_work/_tool/Python/3.11.13/x64/lib"
 
 strategy:
   matrix:
@@ -25,6 +25,11 @@ strategy:
       python.version: '3.11'
 
 steps:
+- script: |
+    echo "Setting LD_LIBRARY_PATH..."
+    echo "$HOME/_work/_tool/Python/3.11.13/x64/lib" >> $env:LD_LIBRARY_PATH
+  displayName: 'Set LD_LIBRARY_PATH for Python'
+
 - task: UsePythonVersion@0
   inputs:
     versionSpec: '$(python.version)'
