@@ -28,13 +28,13 @@ steps:
 #  displayName: 'Use Python $(python.version)'
 #
 - script: |
-    source ~/venv_py/bin/activate
+    source ~/.venv/bin/activate
     python -m pip install --upgrade pip
     pip install -r requirements.txt
   displayName: 'Install dependencies'
 
 - script: |
-    source ~/venv_py/bin/activate
+    source ~/.venv/bin/activate
     pip install pytest pytest-azurepipelines
     pytest
   displayName: 'pytest'
